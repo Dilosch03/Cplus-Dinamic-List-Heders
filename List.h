@@ -3,12 +3,12 @@
 class List {
     private:
         int len = 0;
-        int* data = new int[len];
+        char* data = new char[len];
     public:
-        void append(int num){
+        void append(char num){
             int new_len = len+1;
-            int* temp = new int[new_len];
-            int* for_dell;
+            char* temp = new char[new_len];
+            char* for_dell;
             for (int i = 0; i < len;i++){
                 *(temp + i) = *(data + i);
             }
@@ -19,18 +19,18 @@ class List {
             delete for_dell;                                                              
         }
 
-        void append_arr(int num[],int num_values){
+        void append_arr(char num[],int num_values){
             for (int i = 0;i<num_values;i++){
                 this->append(num[i]);
             }                                                                  
         }
 
-        int value_in_index(int index){
+        char value_in_index(int index){
             if (index>=len) throw std::invalid_argument("Index outside range.");
             return *(data+index);
         }
 
-        int index_of_value(int value){
+        int index_of_value(char value){
             for (int i =0;i<len;i++){
                 if (*(data+i)==value){
                     return i;
@@ -39,11 +39,11 @@ class List {
             return -1;
         }
 
-        int pop(int index = -1){
+        char pop(int index = -1){
             if (index>=len) throw std::invalid_argument("Index outside range.");
             int new_len = len-1;
-            int* temp = new int[new_len];
-            int* for_dell;
+            char* temp = new char[new_len];
+            char* for_dell;
             int ofset = 0;
 
             if (index == -1){
@@ -56,7 +56,7 @@ class List {
                 } else ofset++;
             }
             len = new_len;
-            int value = *(data+new_len);
+            char value = *(data+new_len);
             for_dell = data;
             data = temp;    
             delete for_dell;  
@@ -65,6 +65,16 @@ class List {
 
         int lenght(){
             return len;
+        }
+
+        void clear(){
+            char* temp = new char[0];
+            char* for_del;
+
+            len = 0;
+            for_del = data;
+            data = temp;
+            delete for_del;
         }
 
 };

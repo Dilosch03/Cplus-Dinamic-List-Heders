@@ -62,4 +62,14 @@ class Multi_List {
             return len;
         }
 
+        void clear() {
+            void** temp = new void*[0];
+            void** for_del;
+
+            len = 0;
+            for_del = data;
+            data = temp;
+            delete for_del;
+        }
+
 };
